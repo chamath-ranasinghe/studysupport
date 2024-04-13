@@ -1,12 +1,14 @@
 import Navbar from "./Components/NavBar";
-import Card from "./Components/Card";
+import CardContainer from "./Components/CardContainer";
+import IntoCard from "./Components/IntroCard";
 
 
 function App() {
   return (
     <div className="App">
     <Navbar/>  
-    <Card/>
+    <IntoCard/>
+    <CardContainer/>
     </div>
   );
 }
