@@ -1,9 +1,10 @@
-import TestComponent from "./Components/TestComponent";
+import Navbar from "./Components/NavBar";
+
 
 function App() {
   return (
     <div className="App">
-      <TestComponent/>
+    <Navbar/>  
     </div>
   );
 }
