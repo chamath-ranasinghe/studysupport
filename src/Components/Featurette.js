@@ -6,13 +6,13 @@ const Featurette = (props) => {
     <div className="w-full grid grid-cols-2 place-content-around bg-gray-100 shadow-lg  mb-10 rounded-lg p-4 h-80"> {/* Increased height */}
       <div className="flex flex-shrink-0 justify-center">
         {/* Image */}
-        <img src="image-url.jpg" alt="Featurette Image" className="h-32 w-32 rounded-full" /> {/* Rounded image */}
+        <img src={props.image} alt="Featurette Image" className="h-32 w-32 rounded-full" /> {/* Rounded image */}
       </div>
       <div className="flex flex-col justify-center items-center mr-30"> {/* Center content vertically and horizontally */}
         {/* Title */}
         <h3 className="text-5xl font-bold text-gray-900 mb-8">{props.title}</h3>
         {/* Button */}
-        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg">Get Started</button>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg" style={{ borderRadius: '20px' }}>Get Started</button>
       </div>
     </div>
   );

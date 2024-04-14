@@ -1,4 +1,5 @@
 import React from "react";
+import {AcademicCapIcon} from '@heroicons/react/24/solid'
 
 const Navbar = () => {
   return (
@@ -6,11 +7,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex items-center">
+            <div className="mr-4">
+              <AcademicCapIcon className="w-16 h-16 text-white "/>
+            </div>
             <a href="/" className="text-white font-bold text-lg">
               AISLS
             </a>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden md:block content-center">
             <ul className="flex space-x-4">
               {/* <li>
                 <a href="/" className="text-gray-300 hover:text-white">
@@ -19,7 +23,7 @@ const Navbar = () => {
               </li> */}
               <li>
                 <a
-                  href="/"
+                  href="/signin"
                   className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4" style={{ borderRadius: '20px' }}
                 >
                   Sign in

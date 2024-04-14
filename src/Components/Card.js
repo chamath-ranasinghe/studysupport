@@ -6,7 +6,7 @@ const Card = (props) => {
       <div className="flex justify-center">
         <div className="w-32 h-32 bg-white rounded-lg">
           <div className="flex justify-center">
-              <img src="image-url.jpg" alt="Card Image" className="h-24 w-24 pt-8" />
+              {props.children}
             </div>
         </div>
       </div>
