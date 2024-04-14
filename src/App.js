@@ -1,19 +1,20 @@
-import Navbar from "./Components/NavBar";
-import CardContainer from "./Components/CardContainer";
-import IntoCard from "./Components/IntroCard";
-import Card from "./Components/Card";
-import Featurette from "./Components/Featurette";
-import FeaturetteContainer from "./Components/FeaturetteContainer";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
+import Home from "./Pages/Home";
+import Signin from "./Pages/Signin";
 
 function App() {
   return (
-    <div className="App">
-    <Navbar/>  
-    <IntoCard/>
-    <CardContainer/>
-    <FeaturetteContainer/>
-    </div>
+    <Router>
+            <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/signin" element={<Signin />} />
+            </Routes>
+        </Router>
   );
 }
 
