@@ -2,19 +2,20 @@ import React from 'react';
 
 const Featurette = () => {
   return (
-    <div className="flex shadow-md items-center mb-6 mx-6 rounded-lg p-4 h-32"> {/* Increased height */}
-      <div className="flex-shrink-0 mr-4">
+    <div className="flex shadow-lg justify-around items-center mb-16 mx-12 rounded-lg p-4 h-64"> {/* Increased height */}
+      <div className="flex-shrink-0">
         {/* Image */}
-        <img src="image-url.jpg" alt="Featurette Image" className="h-24 w-24 rounded-full" /> {/* Rounded image */}
+        <img src="image-url.jpg" alt="Featurette Image" className="h-32 w-32 rounded-full" /> {/* Rounded image */}
       </div>
-      <div className="flex flex-col justify-center"> {/* Center content vertically */}
+      <div className="flex flex-col justify-center items-center"> {/* Center content vertically and horizontally */}
         {/* Title */}
-        <h3 className="text-lg font-medium text-gray-900 mb-2 text-center">Past Papers</h3>
+        <h3 className="text-5xl font-bold text-gray-900 mb-8">Past Papers</h3>
         {/* Button */}
-        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg mx-auto">Button</button>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg">Button</button>
       </div>
     </div>
   );
 };
 
 export default Featurette;
+
