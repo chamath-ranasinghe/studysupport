@@ -11,7 +11,6 @@ function App() {
     <Navbar/>  
     <IntoCard/>
     <CardContainer/>
-    <Card/>
     <Featurette/>
     </div>
   );
