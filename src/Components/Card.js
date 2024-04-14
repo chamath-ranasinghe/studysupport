@@ -2,9 +2,15 @@ import React from 'react';
 
 const Card = () => {
   return (
-    <div className="w-1/4 bg-purple-600 shadow-lg rounded-lg p-6 m-2">
-      <h2 className="text-white text-2xl font-bold mb-4">Card Title</h2>
-      <p className="text-white">This is the content of the card.</p>
+    <div className="w-60 h-64 bg-purple-600 shadow-lg rounded-lg p-6 m-2 drop-shadow-md">
+      <div className="flex justify-center">
+        <div className="w-32 h-32 bg-white rounded-lg mb-10">
+          <div className="flex justify-center">
+              <img src="image-url.jpg" alt="Card Image" className="h-24 w-24 pt-8" />
+            </div>
+        </div>
+      </div>
+      <h2 className="text-center text-white text-2xl font-bold mb-4">Card Title</h2>
     </div>
   );
 };
