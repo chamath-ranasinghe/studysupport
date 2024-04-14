@@ -6,16 +6,16 @@ const CardContainer = () => {
     <div className="flex justify-center mt-48 mb-10">
       <div className="flex">
         <div className="w-full mx-8">
-          <Card />
+          <Card title={"Chatbot"}/>
         </div>
         <div className="w-full mx-8">
-          <Card />
+          <Card title={"Past Papers"}/>
         </div>
         <div className="w-full mx-8">
-          <Card />
+          <Card title={"Flashcards"}/>
         </div>
         <div className="w-full mx-8">
-          <Card />
+          <Card title={"External Resources"}/>
         </div>
       </div>
     </div>

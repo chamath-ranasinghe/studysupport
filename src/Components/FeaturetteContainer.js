@@ -4,12 +4,13 @@ import Featurette from './Featurette'; // Assuming you have the Featurette compo
 const FeaturetteContainer = () => {
   return (
     <div className="flex flex-col items-center mx-10">
-      <Featurette />
+      <Featurette title={"Chatbot"} />
       <Featurette />
       <Featurette />
       <Featurette />
     </div>
   );
 };
+
 
 export default FeaturetteContainer;
