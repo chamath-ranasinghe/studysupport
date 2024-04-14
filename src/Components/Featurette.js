@@ -8,7 +8,7 @@ const Featurette = (props) => {
         {/* Image */}
         <img src="image-url.jpg" alt="Featurette Image" className="h-32 w-32 rounded-full" /> {/* Rounded image */}
       </div>
-      <div className="flex flex-col justify-center items-center"> {/* Center content vertically and horizontally */}
+      <div className="flex flex-col justify-center items-center mr-30"> {/* Center content vertically and horizontally */}
         {/* Title */}
         <h3 className="text-5xl font-bold text-gray-900 mb-8">{props.title}</h3>
         {/* Button */}
