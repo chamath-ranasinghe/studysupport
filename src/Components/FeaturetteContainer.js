@@ -5,9 +5,9 @@ const FeaturetteContainer = () => {
   return (
     <div className="flex flex-col items-center mx-10">
       <Featurette title={"Chatbot"} />
-      <Featurette />
-      <Featurette />
-      <Featurette />
+      <Featurette title={"Past Paper"}/>
+      <Featurette title={"Flashcards"}/>
+      <Featurette title={"External Resources"}/>
     </div>
   );
 };

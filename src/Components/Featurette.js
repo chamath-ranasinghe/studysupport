@@ -3,8 +3,8 @@ import React from 'react';
 const Featurette = (props) => {
   console.log(props)
   return (
-    <div className="w-full flex bg-gray-100 shadow-lg justify-around items-center mb-10 rounded-lg p-4 h-80"> {/* Increased height */}
-      <div className="flex-shrink-0">
+    <div className="w-full grid grid-cols-2 place-content-around bg-gray-100 shadow-lg  mb-10 rounded-lg p-4 h-80"> {/* Increased height */}
+      <div className="flex flex-shrink-0 justify-center">
         {/* Image */}
         <img src="image-url.jpg" alt="Featurette Image" className="h-32 w-32 rounded-full" /> {/* Rounded image */}
       </div>
@@ -12,7 +12,7 @@ const Featurette = (props) => {
         {/* Title */}
         <h3 className="text-5xl font-bold text-gray-900 mb-8">{props.title}</h3>
         {/* Button */}
-        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg">Button</button>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg">Get Started</button>
       </div>
     </div>
   );
