@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = () => {
   return (
-    <div className="w-60 h-64 bg-purple-600 shadow-lg rounded-lg p-6 m-2 drop-shadow-md">
+    <div className="w-60 h-64 bg-purple-600 hover:bg-purple-700 shadow-lg rounded-lg p-6 m-2 drop-shadow-md">
       <div className="flex justify-center">
         <div className="w-32 h-32 bg-white rounded-lg mb-10">
           <div className="flex justify-center">
