@@ -2,7 +2,7 @@ import React from 'react';
 
 const Featurette = () => {
   return (
-    <div className="flex shadow-lg justify-around items-center mb-16 mx-12 rounded-lg p-4 h-64"> {/* Increased height */}
+    <div className="w-full flex bg-gray-100 shadow-lg justify-around items-center mb-10 rounded-lg p-4 h-64"> {/* Increased height */}
       <div className="flex-shrink-0">
         {/* Image */}
         <img src="image-url.jpg" alt="Featurette Image" className="h-32 w-32 rounded-full" /> {/* Rounded image */}

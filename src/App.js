@@ -3,6 +3,7 @@ import CardContainer from "./Components/CardContainer";
 import IntoCard from "./Components/IntroCard";
 import Card from "./Components/Card";
 import Featurette from "./Components/Featurette";
+import FeaturetteContainer from "./Components/FeaturetteContainer";
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     <Navbar/>  
     <IntoCard/>
     <CardContainer/>
-    <Featurette/>
+    <FeaturetteContainer/>
     </div>
   );
 }
