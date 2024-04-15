@@ -1,6 +1,13 @@
+import FlashCardInput from "../Components/FlashCardInput";
+import Navbar from "../Components/NavBar";
 
-const FlashCardPage = () => {
-    return <div>Signin</div>;
-  };
+function FlashCardPage() {
+    return (
+        <div>
+            <Navbar/> 
+            <FlashCardInput/>     
+        </div>
+    );
+  }
   
   export default FlashCardPage;
