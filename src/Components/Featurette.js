@@ -11,8 +11,8 @@ const Featurette = (props) => {
       <div className="flex flex-col justify-center items-center mr-30"> {/* Center content vertically and horizontally */}
         {/* Title */}
         <h3 className="text-5xl font-bold text-gray-900 mb-8">{props.title}</h3>
-        {/* Button */}
-        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg" style={{ borderRadius: '20px' }}>Get Started</button>
+        {/* Children */}
+        {props.children}
       </div>
     </div>
   );

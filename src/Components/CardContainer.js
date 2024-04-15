@@ -18,8 +18,8 @@ const CardContainer = () => {
           <Card title={"Past Papers"}><BookOpenIcon className="h-24 w-24 pt-8"/></Card>
         </div>
         <div className="w-full mx-8">
-          <Card title={"Flashcards"}><RectangleStackIcon className="h-24 w-24 pt-8"/></Card>
-        </div>
+         <Card title={"Flashcards"}><RectangleStackIcon className="h-24 w-24 pt-8"/></Card>
+      </div>
         <div className="w-full mx-8">
           <Card title={"External Resources"}><PlayCircleIcon className="h-24 w-24 pt-8"/></Card>
         </div>
