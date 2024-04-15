@@ -2,7 +2,7 @@ import React from 'react';
 
 const FlashCardInput = () => {
   return (
-    <div className="bg-white-100 shadow-lg  mt-16 mx-10 rounded-lg p-4 h-96"> {/* Increased height */}
+    <div className="bg-white-100 shadow-lg  mt-16 mx-10 rounded-lg p-4 h-80"> {/* Increased height */}
         <div className='flex flex-col '>
             <div className='bg-gray-300 shadow-md rounded-lg p-3 m-3  '>Enter a Title to the card set</div>
             <div className='grid grid-rows-2 grid-flow-col'>
@@ -12,9 +12,8 @@ const FlashCardInput = () => {
             </div>
         </div>
         <div className='grid grid-rows-1 grid-flow-col place-content-between'>
-            <div className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 mt-16 m-3 rounded-lg">Ask AI to Create</div>
-            <div className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 mt-16 m-3 rounded-lg">Create</div>
-
+            <div className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg">Ask AI to Create</div>
+            <div className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg">Create</div>
         </div>
     </div>
     );
