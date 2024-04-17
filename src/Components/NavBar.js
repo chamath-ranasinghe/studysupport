@@ -1,17 +1,21 @@
 import React from "react";
-import {AcademicCapIcon} from '@heroicons/react/24/solid'
+import PageIcon from "../Assets/Images/logo-with-text.png"
+import {useState} from 'react';
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  const [isSignin,setIsSignin] = useState(props.isSignin);
+
   return (
     <nav className="bg-gray-800 p-4">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex items-center">
             <div className="mr-4">
-              <AcademicCapIcon className="w-16 h-16 text-white "/>
+              <img src={PageIcon} className="object-contain h-32" />
             </div>
             <a href="/" className="text-white font-bold text-lg">
-              AISLS
+              Edusphere
             </a>
           </div>
           <div className="hidden md:block content-center">
@@ -24,7 +28,8 @@ const Navbar = () => {
               <li>
                 <a
                   href="/signin"
-                  className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4" style={{ borderRadius: '20px' }}
+                  className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4"
+                  style={{ borderRadius: "20px" }}
                 >
                   Sign in
                 </a>
@@ -32,12 +37,20 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="md:hidden flex justify-start"> {/* Align button to the left */}
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg">
-              Sign in
-            </button>
+          {isSignin ? (
+            <div className="md:hidden flex justify-start">
+            {" "}
           </div>
-          
+          ) : (
+            <div className="md:hidden flex justify-start">
+              {" "}
+              {/* Align button to the left */}
+              <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg">
+                Sign in
+              </button>
+            </div>
+          )}
+
           <div className="md:hidden">
             <button className="text-gray-300 hover:text-white focus:outline-none">
               <svg

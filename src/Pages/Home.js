@@ -8,7 +8,7 @@ import Chatbot from "../Components/Chatbot";
 function Home() {
   return (
     <div>
-    <Navbar/>  
+    <Navbar isSignin={false}/>  
     <IntoCard/>
     <CardContainer/>
     <FeaturetteContainer/>
