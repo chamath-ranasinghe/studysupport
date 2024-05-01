@@ -1,18 +1,27 @@
 import { useState } from "react";
 import Navbar from "../Components/NavBar";
+import axios from 'axios';
 
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Add your login logic here
         const username = e.target.elements.username.value;
         const password = e.target.elements.password.value;
 
-        console.log(username);
-        console.log(password);
+        const url = 'http://localhost:5000/sign-in'; 
+        const postData = {username: username, password: password};
+
+        try{
+            const response = await axios.post(url,postData);
+            console.log(response)
+        } catch(error){
+            console.error(error)
+        }
+        
     };
 
     const handleUsernameChange = (e) => {
