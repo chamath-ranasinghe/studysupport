@@ -18,7 +18,7 @@ function App() {
                 <Route path="/flashcardpage" element={<FlashCardPage />} />
                 <Route path="/register" element={<Register />} />
             </Routes>
-        </Router>
+    </Router>
   );
 }
 

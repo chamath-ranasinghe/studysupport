@@ -1,10 +1,15 @@
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import Navbar from "../Components/NavBar";
+import AlertBox from "../Components/AlertBox";
 import axios from 'axios';
+import { Alert } from "@mui/material";
 
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [isAuthorized, setAuthorized] = useState(true);
+    let navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -17,7 +22,13 @@ export default function Login() {
 
         try{
             const response = await axios.post(url,postData);
-            console.log(response)
+            
+            // If response is True direct to Dashboard else display error message
+            if (response.data.correct){
+                navigate("/dashboard");
+            } else{
+                setAuthorized(false);
+            }
         } catch(error){
             console.error(error)
         }
@@ -72,6 +83,10 @@ export default function Login() {
                     </form>
                 </div>
             </div>
+
+            {/* Incorrect Credentials Warning*/}
+            {(isAuthorized)?(""):(<AlertBox/>)}
+            
         </>
     );
 }

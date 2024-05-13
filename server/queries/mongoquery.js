@@ -1,39 +1,41 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = `mongodb+srv://chamathj11:${process.env.MY_MONGODB_ACCESS_KEY}@cluster0.xbnqaje.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const auth = require("../auth/auth");
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri
-//     , {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-//}
-);
+const client = new MongoClient(uri);
 
-exports.checkUser = (req, res)=>{
-    run();
+const run = async () =>{
+    await client.connect();
+    console.log("Successfully Connected to Mongo Server");
 }
 
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+exports.checkUser = async (req, res) =>{
+    const db = client.db('study_support');
+    const coll = db.collection('user_details');
 
-    const db = client.db("sample_mflix");
-    const coll = db.collection("movies");
-    
-    const cursor = coll.find()
+    const username = req.body.username;
+    const password = req.body.password;
 
-    await cursor.forEach(console.log);
+    const query = {username: username};
 
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
+    try{
+        const document = await coll.findOne(query);
+        if (document.password == password){
+
+            // Create a access token for session authorization
+            const token = auth.getToken(username);
+            res.cookie("jwt",token,{httpOnly:true});
+            
+            res.send({correct: true});
+        }else{
+            res.send({correct: false});
+        }
+
+    } catch(err){
+        console.error(err);
+        res.status(500);
+    }
 }
 
 run().catch(console.dir);
