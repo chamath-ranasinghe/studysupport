@@ -3,10 +3,10 @@ import FlashCardInput from "../Components/FlashCardInput";
 import FlashCardTile from "../Components/FlashCardTile";
 import FlashCardTileContainer from "../Components/FlashCardTilesContainer";
 import Navbar from "../Components/NavBar";
-import { DataContext } from '../Helpers/DataContext';
+import { DataContext } from '../routes/UserRoute';
 
 function FlashCardPage() {
-    const {data} = useContext(DataContext);
+    const data = useContext(DataContext);
     return (
         <div>
             <Navbar/> 

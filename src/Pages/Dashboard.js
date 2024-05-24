@@ -1,11 +1,10 @@
 import React from "react";
 import { useContext } from "react";
-import { DataContext } from "../Helpers/DataContext";
+import { DataContext } from "../routes/UserRoute";
 
 const Dashboard = () => {
-  const { data } = useContext(DataContext);
   //const fullname = data[0].fullName;
-  return <div>Loaded</div>;
+  return <div> Loaded </div>;
 };
 
 export default Dashboard;

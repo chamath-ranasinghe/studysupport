@@ -1,16 +1,25 @@
-import React, { useState} from 'react';
-
+import React, { useState } from 'react';
 
 const FlashCardInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const items = props.data;
-  console.log(items);
-//   const items = [
-//     { key: 'Option 1', value: 'value1' },
-//     { key: 'Option 2', value: 'value2' },
-//     { key: 'Option 3', value: 'value3' }
-//   ];
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [specialTags, setSpecialTags] = useState(null);
+
+  const items = props.items;
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const handleTags = (e) => {
+    setSpecialTags(e.target.value);
+  };
 
   const handleSelect = (key) => {
     setSelectedItem(key);
@@ -20,9 +29,18 @@ const FlashCardInput = (props) => {
   return (
     <div className="bg-white-100 shadow-lg mt-16 mx-10 rounded-lg p-4 relative">
       <div className='flex flex-col'>
-        <div className='bg-gray-300 shadow-md rounded-lg p-3 m-3'>Enter a Title to the card set</div>
+        <input
+          type="text"
+          placeholder="Enter a Title to the card set"
+          className='bg-gray-300 shadow-md rounded-lg p-3 m-3'
+          onChange={handleTitle}
+        />
         <div className='grid grid-rows-2 grid-flow-col'>
-          <div className='col-span-5 row-span-2 bg-gray-300 shadow-md rounded-lg p-5 m-3'>Add a description</div>
+          <textarea
+            placeholder="Add a description"
+            className='col-span-5 row-span-2 bg-gray-300 shadow-md rounded-lg p-5 m-3'
+            onChange={handleDescription}
+          />
           <div
             className='col-span-2 bg-gray-300 shadow-md rounded-lg p-3 mb-5 m-3 cursor-pointer relative'
             onClick={() => setIsOpen(!isOpen)}
@@ -46,12 +64,21 @@ const FlashCardInput = (props) => {
               </div>
             )}
           </div>
-          <div className='col-span-2 bg-gray-300 shadow-md rounded-lg p-3 mb-4 m-3'>Special Tags</div>
+          <input
+            type="text"
+            placeholder="Special Tags"
+            className='col-span-2 bg-gray-300 shadow-md rounded-lg p-3 mb-4 m-3'
+            onChange={handleTags}
+          />
         </div>
       </div>
       <div className='grid grid-rows-1 grid-flow-col place-content-between'>
-        <div className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg">Ask AI to Create</div>
-        <div className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg">Create</div>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg">
+          Ask AI to Create
+        </button>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg">
+          Create
+        </button>
       </div>
     </div>
   );

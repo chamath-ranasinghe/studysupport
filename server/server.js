@@ -12,7 +12,7 @@ const PORT = 5000;
 
 app.get("/",(req,res)=>{
     res.send("<h3> Server Running </h3>")
-})
+});
 
 app.post("/sign-in",(req,res)=>{
     query.checkUser(req,res);
