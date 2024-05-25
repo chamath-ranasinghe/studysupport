@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const FlashCardInput = (props) => {
@@ -8,6 +9,28 @@ const FlashCardInput = (props) => {
   const [specialTags, setSpecialTags] = useState(null);
 
   const items = props.items;
+
+  const handleManualCreate = async ()=>{
+    const flashcardContent = {
+      userid: 2,
+      title:title,
+      description:description,
+      specialTags:specialTags,
+      flashcards: props.flashcards
+    }
+
+    const url = "http://localhost:5000/insert-flashcards";
+
+    try{
+      const response = await axios.post(url,flashcardContent);
+      console.log(response);
+      window.location.reload();
+      
+  } catch(error){
+      console.error(error)
+  }
+
+  }
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -76,7 +99,7 @@ const FlashCardInput = (props) => {
         <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg">
           Ask AI to Create
         </button>
-        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg">
+        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 m-3 rounded-lg" onClick={handleManualCreate}>
           Create
         </button>
       </div>

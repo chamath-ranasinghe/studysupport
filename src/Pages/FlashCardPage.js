@@ -45,7 +45,7 @@ function FlashCardPage() {
   return (
     <div className="relative">
       <Navbar />
-      <FlashCardInput items={data} />
+      <FlashCardInput items={data} flashcards={flashcards} />
 
       <div className={`transition-opacity duration-300 ${isNavOpen ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}>
         {flashcards.map((card, index) => (

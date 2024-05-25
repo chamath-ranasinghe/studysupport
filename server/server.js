@@ -18,6 +18,10 @@ app.post("/sign-in",(req,res)=>{
     query.checkUser(req,res);
 });
 
+app.post("/insert-flashcards",(req,res)=>{
+    query.insertFlashcards(req,res);
+})
+
 app.listen(PORT,()=>{
     console.log(`Server Running on Port ${PORT}`)    
 });

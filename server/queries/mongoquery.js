@@ -35,10 +35,41 @@ exports.checkUser = async (req, res) => {
     } else {
       res.send({ correct: false });
     }
+
+    db.close();
+
   } catch (err) {
     console.error(err);
+    db.close();
     res.status(500);
   }
 };
+
+exports.insertFlashcards = async(req,res)=>{
+
+  const flashcardContent = req.body;
+  const {userid} = flashcardContent;
+
+  const collName = `flashcards_${userid}`;
+
+  const db = client.db("study_support");
+  const coll = db.collection(collName);
+
+  try {
+    await coll.insertOne(flashcardContent,(err,res)=>{
+      if (err) throw err;
+      console.log("Document Inserted");
+      db.close();
+    })
+
+    res.send("Document Inserted");
+
+  } catch (err) {
+    console.error(err);
+    db.close();
+    res.status(500);
+  }
+
+}
 
 run().catch(console.dir);
