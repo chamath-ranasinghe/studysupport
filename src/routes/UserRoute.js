@@ -10,6 +10,7 @@ import {
   
   import Dashboard from "../Pages/Dashboard";
   import FlashCardPage from "../Pages/FlashCardPage";
+  import ViewFlashcard from "../Pages/ViewFlashcard";
 
   export const DataContext = createContext();
 
@@ -59,6 +60,7 @@ import {
               <Routes>
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/flashcardpage" element={<FlashCardPage />} />
+                  <Route path="/viewflashcard" element={<ViewFlashcard />} />
               </Routes>
       </Router>
       {/* </DataContextProvider> */}
