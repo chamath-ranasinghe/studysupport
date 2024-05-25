@@ -62,14 +62,34 @@ exports.insertFlashcards = async(req,res)=>{
       db.close();
     })
 
-    res.send("Document Inserted");
+    res.send({success:true});
 
   } catch (err) {
     console.error(err);
     db.close();
+    res.send({success:false});
     res.status(500);
   }
 
+}
+
+exports.getFlashCards = async(req,res)=>{
+  const {userid} = req.body;
+  const flashcardName = `flashcards_${userid}`;
+
+  const db = client.db("study_support");
+  const collection = db.collection(flashcardName);
+
+  try {
+    const data = await collection.find().toArray();
+    console.log(data);
+    const flashcards = {flashcards: data};
+    db.close();
+    
+    res.send(flashcards);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 }
 
 run().catch(console.dir);

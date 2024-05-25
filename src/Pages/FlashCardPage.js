@@ -6,11 +6,13 @@ import { DataContext } from "../routes/UserRoute";
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid';
 import { useNavigate } from "react-router-dom";
 import CollapsibleNavbar from "../Components/Flashcard/CollapsibleNavbar";
+import CreatedBox from "../Components/Flashcard/CreatedBox";
 
 function FlashCardPage() {
   const data = useContext(DataContext);
   const [flashcards, setFlashcards] = useState([]);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,7 +47,7 @@ function FlashCardPage() {
   return (
     <div className="relative">
       <Navbar />
-      <FlashCardInput items={data} flashcards={flashcards} />
+      <FlashCardInput items={data} flashcards={flashcards} isCreated={setIsCreated} />
 
       <div className={`transition-opacity duration-300 ${isNavOpen ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}>
         {flashcards.map((card, index) => (
@@ -81,6 +83,8 @@ function FlashCardPage() {
 
       {/* Collapsible Navbar */}
       <CollapsibleNavbar isNavOpen={isNavOpen} toggleNav={toggleNav}/>
+
+      {isCreated? <CreatedBox/>:""}
     </div>
   );
 }

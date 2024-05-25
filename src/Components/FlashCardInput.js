@@ -23,8 +23,12 @@ const FlashCardInput = (props) => {
 
     try{
       const response = await axios.post(url,flashcardContent);
-      console.log(response);
-      window.location.reload();
+      console.log(response.data.success);
+      if (response.data.success){
+        props.isCreated(true);
+      } else{
+        props.isCreated(false);
+      }
       
   } catch(error){
       console.error(error)

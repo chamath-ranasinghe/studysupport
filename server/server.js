@@ -22,6 +22,10 @@ app.post("/insert-flashcards",(req,res)=>{
     query.insertFlashcards(req,res);
 })
 
+app.post("/get-flashcards",(req,res)=>{
+    query.getFlashCards(req,res);
+})
+
 app.listen(PORT,()=>{
     console.log(`Server Running on Port ${PORT}`)    
 });
