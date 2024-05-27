@@ -41,11 +41,11 @@ export default function CreatedBox(props) {
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                        Incorrect Credentials
+                        Success!
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          {`Flashcard successfully created!`}
+                          {props.message}
                         </p>
                       </div>
                     </div>

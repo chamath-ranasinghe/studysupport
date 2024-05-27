@@ -84,7 +84,7 @@ function FlashCardPage() {
       {/* Collapsible Navbar */}
       <CollapsibleNavbar isNavOpen={isNavOpen} toggleNav={toggleNav}/>
 
-      {isCreated? <CreatedBox/>:""}
+      {isCreated? <CreatedBox message="Flashcards Successfully Created"/>:""}
     </div>
   );
 }

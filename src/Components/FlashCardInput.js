@@ -11,8 +11,11 @@ const FlashCardInput = (props) => {
   const items = props.items;
 
   const handleManualCreate = async ()=>{
+
+    const userid = localStorage.getItem("userid");
+    
     const flashcardContent = {
-      userid: 2,
+      userid: userid,
       title:title,
       description:description,
       specialTags:specialTags,

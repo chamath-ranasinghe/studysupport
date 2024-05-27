@@ -21,6 +21,7 @@ import {
   function UserRoute() {
 
     const [data, setData] = useState(null);
+    const userid = localStorage.getItem('userid');
 
     useEffect(() => {
       // Fetch data from the database when "/dashboard" route is accessed
@@ -34,7 +35,7 @@ import {
               wstoken: process.env.REACT_APP_MOODLE_ACCESS_TOKEN,
               wsfunction: "core_enrol_get_users_courses",
               moodlewsrestformat: "json",
-              userid: 2,
+              userid: userid,
             },
           }
         );

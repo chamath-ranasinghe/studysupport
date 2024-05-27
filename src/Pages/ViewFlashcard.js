@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const ViewFlashcard = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [flashcardInfo, setFlashcardInfo] = useState(null);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -17,9 +18,9 @@ const ViewFlashcard = () => {
 
         try{
             const response = await axios.post(url,postData);
-            console.log(response);
+            setFlashcardInfo(response.data);
         } catch (err){
-            console.error(err)
+            console.error(err);
         }
     }
 

@@ -25,6 +25,23 @@ export default function Login() {
             
             // If response is True direct to Dashboard else display error message
             if (response.data.correct){
+
+                // This section is to store the userid in localstorage
+                if (response.data.userid){
+                    localStorage.setItem("userid",response.data.userid);
+                } else{
+
+                    // If no userid in database. Fetch the userid from moodle and update the database
+                    const useridUrl = 'http://localhost:5000/get-userid';
+                    const useridPostData = {moodleemail: response.data.moodleemail};
+
+                    try{
+                        const responseId = await axios.post(useridUrl,useridPostData);
+                        localStorage.setItem("userid",responseId.data.userid);
+                    } catch (err){
+                        console.error(err);
+                    }
+                }
                 navigate("/dashboard");
             } else{
                 setAuthorized(false);
