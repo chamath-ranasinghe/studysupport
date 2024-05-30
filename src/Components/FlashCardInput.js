@@ -18,6 +18,7 @@ const FlashCardInput = (props) => {
       userid: userid,
       title:title,
       description:description,
+      modulename:selectedItem,
       specialTags:specialTags,
       flashcards: props.flashcards
     }
