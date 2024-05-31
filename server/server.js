@@ -23,6 +23,52 @@ app.post("/insert-flashcards", (req, res) => {
   query.insertFlashcards(req, res);
 });
 
+app.post("/insert-flashcards-ai", (req,res)=>{
+  console.log(req.body);
+
+  // Steps
+
+  // Fetch PDF from Moodle
+
+  // Process using AI
+
+  // Store it in database
+
+  res.send({success: true});
+});
+
+app.post('/get-docs', async(req,res) =>{
+  try {
+    const {courseid} = req.body;
+
+    // Make a GET request to Moodle API to fetch enrolled modules for the specified user
+    const response = await axios.get(
+      `http://localhost/moodle/webservice/rest/server.php`,
+      {
+        params: {
+          wstoken: process.env.MOODLE_ACCESS_TOKEN,
+          wsfunction: "mod_resource_get_resources_by_courses",
+          moodlewsrestformat: "json",
+          courseids: [courseid],
+        },
+      }
+    );
+
+    // Extract documents from the response
+    console.log(response.data);
+    const resources = response.data.resources[0];
+    const documents = resources.contentfiles.filter(file => file.mimetype === "application/pdf");
+
+    //const documents = response.data;
+    // Return the enrolled modules as a response
+    res.json(documents);
+  } catch (error) {
+    // Handle errors
+    console.error("Error fetching documents:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+})
+
 app.post("/get-flashcards", (req, res) => {
   query.getFlashCards(req, res);
 });
