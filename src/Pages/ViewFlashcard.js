@@ -12,7 +12,7 @@ const ViewFlashcard = () => {
   useEffect(()=>{
     const fetchData = async ()=>{
         console.log("useEffect Working");
-        const postData = {userid:2};
+        const postData = {userid:2}; //sending the userid 
         const url = "http://localhost:5000/get-flashcards";
 
         try{
