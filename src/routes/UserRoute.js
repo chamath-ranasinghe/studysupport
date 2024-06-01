@@ -21,32 +21,24 @@ import {
   function UserRoute() {
 
     const [data, setData] = useState(null);
+    const userid = localStorage.getItem('userid');
 
     useEffect(() => {
       // Fetch data from the database when "/dashboard" route is accessed
       const fetchData = async () => {
-        try {
-          // Make a GET request to Moodle API to fetch enrolled modules for the specified user
-      const response = await axios.get(
-          `http://localhost/moodle/webservice/rest/server.php`,
-          {
-            params: {
-              wstoken: process.env.REACT_APP_MOODLE_ACCESS_TOKEN,
-              wsfunction: "core_enrol_get_users_courses",
-              moodlewsrestformat: "json",
-              userid: 2,
-            },
-          }
-        );
-          const jsonData = await response.data;
+
+        const url = 'http://localhost:5000/get-courses';
+        try{
+          const response = await axios.post(url,{userid:userid});
+          const jsonData = response.data;
           const filteredData = filterIdAndFullName(jsonData);
           setData(filteredData);
-        } catch (error) {
-          console.error('Error fetching data:', error);
+        } catch (err){
+          console.error(err)
         }
       };
-  
-      // Check if current route is "/dashboard" before fetching data
+
+      // Check if current route is "/flashcardpage" before fetching data
       if (window.location.pathname === '/flashcardpage') {
         fetchData();
       }

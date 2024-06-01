@@ -23,12 +23,17 @@ exports.checkUser = async (req, res) => {
     const document = await coll.findOne(query);
 
     if (document) {
+      const moodleemail = document.moodleemail;
       if (document.password == password) {
         // Create a access token for session authorization
         const token = auth.getToken(username);
         res.cookie("jwt", token, { httpOnly: true });
 
-        res.send({ correct: true });
+        if (document.userid){
+          res.send({ correct: true, userid: document.userid });
+        }else{
+          res.send({correct: true, moodleemail: moodleemail});
+        }
       } else {
         res.send({ correct: false });
       }
@@ -36,14 +41,59 @@ exports.checkUser = async (req, res) => {
       res.send({ correct: false });
     }
 
-    db.close();
-
   } catch (err) {
     console.error(err);
-    db.close();
     res.status(500);
   }
 };
+
+exports.addUser = async(req,res)=>{
+
+  const userDetails = req.body;
+
+  const db = client.db("study_support");
+  const coll = db.collection("user_details");
+
+  try {
+    await coll.insertOne(userDetails,(err,res)=>{
+      if (err) throw err;
+      console.log("User Added");
+    })
+
+    res.send({success:true});
+
+  } catch (err) {
+    console.error(err);
+    res.send({success:false});
+    res.status(500);
+  }
+
+}
+
+exports.setUserId = async(res,userId,moodleemail)=>{
+
+  const db = client.db("study_support");
+  const coll = db.collection("user_details");
+
+  try {
+    const filter = { moodleemail: moodleemail };
+
+    // Define the update operation
+    const update = {
+      $set: {
+        userid: userId
+      }
+    };
+
+    const result = await coll.updateOne(filter, update);
+
+  } catch (err) {
+    console.error(err);
+    res.send({success:false});
+    res.status(500);
+  }
+
+}
 
 exports.insertFlashcards = async(req,res)=>{
 
@@ -82,11 +132,7 @@ exports.getFlashCards = async(req,res)=>{
 
   try {
     const data = await collection.find().toArray();
-    console.log(data);
-    const flashcards = {flashcards: data};
-    db.close();
-    
-    res.send(flashcards);
+    res.json(data);
   } catch (error) {
     res.status(500).send(error);
   }

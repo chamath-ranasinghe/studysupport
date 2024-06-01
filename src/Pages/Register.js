@@ -1,18 +1,53 @@
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import AlertBox from "../Components/AlertBox";
+import CreatedBox from "../Components/Flashcard/CreatedBox";
+import { Alert } from "@mui/material";
+
 
 export default function SignUp() {
+
+    const navigate = useNavigate();
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [moodleUsername, setMoodleUsername] = useState('');
+    const [moodleEmail, setMoodleEmail] = useState('');
     const [moodlePassword, setMoodlePassword] = useState('');
+    const [isRegistered, setIsRegistered] = useState(null);
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Add your signup logic here
+        
+        const userDetails = {
+            firstname:firstName,
+            lastname:lastName,
+            email:email,
+            username:username,
+            password:password,
+            moodleemail:moodleEmail
+        }
+
+        const url = "http://localhost:5000/register"
+
+        try{
+            const response = await axios.post(url,userDetails);
+
+            if (response.data.success){
+                setIsRegistered(true);
+            } else{
+                navigate('/register');
+                setIsRegistered(false);
+            }
+        } catch (err){
+            console.error(err);
+            setIsRegistered(false);
+        }
+
     };
 
     const handleFirstNameChange = (e) => {
@@ -35,8 +70,8 @@ export default function SignUp() {
         setPassword(e.target.value);
     };
 
-    const handleMoodleUsernameChange = (e) => {
-        setMoodleUsername(e.target.value);
+    const handleMoodleEmailChange = (e) => {
+        setMoodleEmail(e.target.value);
     };
 
     const handleMoodlePasswordChange = (e) => {
@@ -98,11 +133,11 @@ export default function SignUp() {
                                     Credentials</p>
                             </div>
                             <div>
-                                <label htmlFor="moodle-username" className="sr-only">Moodle Username</label>
-                                <span>Moodle Username</span>
-                                <input id="moodle-username" name="moodle-username" type="username"
-                                       autoComplete="moodle-username" required
-                                       value={moodleUsername} onChange={handleMoodleUsernameChange}
+                                <label htmlFor="moodle-email" className="sr-only">Moodle Email</label>
+                                <span>Moodle Email</span>
+                                <input id="moodle-email" name="moodle-email" type="email"
+                                       autoComplete="moodle-email" required
+                                       value={moodleEmail} onChange={handleMoodleEmailChange}
                                        className="bg-gray-300 rounded-md relative block w-full px-2 py-2 mb-4"
                                 />
                             </div>
@@ -125,6 +160,10 @@ export default function SignUp() {
                     </form>
                 </div>
             </div>
+
+            {/* Incorrect Credentials Warning*/}
+            {(isRegistered == true)?(<CreatedBox message="Successfully Registered"/>):""}
+            {(isRegistered == false)?(<AlertBox/>):""}
         </>
     );
 }
