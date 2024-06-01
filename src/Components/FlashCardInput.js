@@ -59,7 +59,6 @@ const FlashCardInput = (props) => {
 
     try {
       const response = await axios.post(url, courseInfo);
-      console.log(response.data);
       setCourseDocs(response.data);
       toggleOverlay();
     } catch (error) {

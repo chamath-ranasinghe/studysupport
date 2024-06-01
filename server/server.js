@@ -56,8 +56,10 @@ app.post('/get-docs', async(req,res) =>{
 
     // Extract documents from the response
     console.log(response.data);
-    const resources = response.data.resources[0];
-    const documents = resources.contentfiles.filter(file => file.mimetype === "application/pdf");
+    // Filter contentfiles based on mimetype
+    const documents = response.data.resources.flatMap(resource =>
+      resource.contentfiles.filter(file => file.mimetype === 'application/pdf')
+    );
 
     //const documents = response.data;
     // Return the enrolled modules as a response
