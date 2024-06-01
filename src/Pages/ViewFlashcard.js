@@ -6,7 +6,7 @@ import FlashcardViewer from "../Components/Flashcard/FlashcardViewer";
 
 const ViewFlashcard = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [flashcardInfo, setFlashcardInfo] = useState([]);
+  const [flashcardInfo, setFlashcardInfo] = useState([]); 
   const [selectedFlashcard, setSelectedFlashcard] = useState(null);
 
   const toggleNav = () => {
@@ -24,7 +24,7 @@ const ViewFlashcard = () => {
   useEffect(() => {
     const fetchData = async () => {
       console.log("useEffect Working");
-      const postData = {userid: localStorage.getItem('userid')};
+      const postData = {userid: localStorage.getItem('userid')};  //sending user ID
       const url = "http://localhost:5000/get-flashcards";
 
       try {
