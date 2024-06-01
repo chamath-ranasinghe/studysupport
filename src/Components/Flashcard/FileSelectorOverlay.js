@@ -4,9 +4,12 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 
 const FileSelectorOverlay = ({ files, onClose, setSelectedFile, handleAICreate }) => {
 
+  const [selectedFileName, setSelectedFileName] = useState("");   
+
   const handleFileChange = (e) => {
-    console.log(e.target.value);
-    setSelectedFile(e.target.value);
+    setSelectedFileName(e.target.value);
+    const selectedFile = files.find(file => file.fileurl === e.target.value);
+    setSelectedFile(selectedFile.fileurl);
   };
 
   const handleSubmit = () => {
@@ -31,7 +34,7 @@ const FileSelectorOverlay = ({ files, onClose, setSelectedFile, handleAICreate }
           <select
             id="file-selector"
             className="block w-full border border-gray-300 rounded-md p-2"
-            value={"Select File"}
+            value={selectedFileName}
             onChange={handleFileChange}
           >
             <option value="" disabled>Select a file</option>
