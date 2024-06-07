@@ -1,12 +1,12 @@
 import React from "react";
 import { useContext } from "react";
-import Navbar from "../Components/NavBar";
+import NavBarSignedIn from "../Components/NavBarSignedIn";
 import { DataContext } from "../routes/UserRoute";
 
 const Dashboard = () => {
   return (
     <>
-      <Navbar />
+      <NavBarSignedIn />
       <div class="bg-purple-600 min-h-screen flex items-center justify-center">
       <div className="bg-white rounded-lg shadow-lg w-11/12 h-5/6 p-6">
         <div className="flex justify-between items-start">
