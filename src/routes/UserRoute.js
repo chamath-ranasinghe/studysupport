@@ -40,7 +40,7 @@ import {
       };
 
       // Check if current route is "/flashcardpage" before fetching data
-      if (window.location.pathname === '/flashcardpage') {
+      if (window.location.pathname === '/flashcardpage' | window.location.pathname === '/summary' ) {
         fetchData();
       }
     }, []);
